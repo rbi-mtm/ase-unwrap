@@ -1,0 +1,32 @@
+[build-system]
+requires = ['setuptools', 'setuptools-scm']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'ase-unwrap'
+version = '1.0.0'
+authors = [
+    {name = 'Juraj Ovčar', email = 'juraj.ovcar@gmail.com'},
+]
+description = 'Simple tool for unwrapping atomic structures using ASE'
+readme = 'README.rst'
+requires-python = '>=3.9'
+keywords = [
+	'ase', 'atoms', 'structure', 'pbc', 'periodic', 'boundary', 'box',
+	'molecule', 'unwrap', 'neighbor', 'neighborlist'
+]
+license = {text = 'MIT'}
+classifiers = [
+    'Programming Language :: Python :: 3',
+    'License :: OSI Approved :: MIT License',
+]
+dependencies = [
+    'importlib-metadata; python_version>="3.9"',
+    'ase'
+]
+
+[tool.setuptools.dynamic]
+version = {attr = 'ase_unwrap.__version__'}
+
+[project.scripts]
+ase-unwrap = "ase_unwrap.unwrap:_main_cli"
