@@ -51,6 +51,6 @@ or used as a library:
         import ase.io
         from ase_unwrap.unwrap import unwrap
 
-        atoms = read('unwrapped_structure.traj')
+        atoms = read('wrapped_structure.traj')
 
         unwrap(atoms)
