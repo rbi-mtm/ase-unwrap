@@ -14,22 +14,27 @@ from ase.neighborlist import NeighborList
 def reorder_mol(neighbor_list, mol_indices, center_atom=None, reordered=None):
     """Reorder a list of atom indices starting from the ``center_atom``
 
-    The reordering is done recursively, in such a way that it is apparent
-        how the atoms in the molecule are connected
+    The reordering is done recursively. The ``center_atom`` is the
+        first one added to the list. Then, one of its neighbors is added.
+        Then, one of the neighbors of the neighbor is added...
+
+    fix_mol() then iterates over the reordered list and translates the atoms
+        for the molecule to be unwrapped.
 
     Parameters
     ----------
     neigbor_list : ase.neighborlist.Neighborlist
         ASE neighborlist
     mol_indices : list of int
-        List of atom indices
+        List of atomic indices defining the molecule
     center_atom : None | int
         Atom index from which to start recursively finding closest neighbors;
             if None, mol_indices[0] is chosen
 
     Returns
     -------
-    reordered
+    reordered : list of int
+        Reordered list of atomic indices
 
     """
 
@@ -93,8 +98,7 @@ def fix_mol(atoms, neighbor_list, mol_indices):
     neigbor_list : ase.neighborlist.Neighborlist
         ASE neighborlist
     mol_indices : list of int
-        List of atom indices
-
+        List of atomic indices defining the molecule
 
     """
 
